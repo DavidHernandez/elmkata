@@ -2,6 +2,16 @@
 
 > elmkata
 
+## Docker
+
+The image pins Node 6.17.1 (npm 3.10.10) and Elm 0.17.0, so nothing needs to be installed locally.
+
+* Dev server with live reload: `docker compose up app`, then open http://localhost:3000
+* Unit tests in the browser: `docker compose up reactor`, then open http://localhost:8000/src/elm/TestRunner.elm
+* One-off commands: `docker compose run --rm app gulp publish`
+
+Elm 0.17's npm installer no longer works because Bintray is gone. The `Dockerfile` explains where the Elm binaries come from instead.
+
 ## Installation
 
 Make sure the following are installed:

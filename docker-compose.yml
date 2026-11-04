@@ -1,0 +1,24 @@
+services:
+  # Dev server with file watching and live reload: http://localhost:3000
+  app:
+    build: .
+    image: elmkata
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - .:/app
+      # Keep the dependencies installed in the image instead of the host's.
+      - /app/node_modules
+      - /app/elm-stuff
+
+  # Browser test runner: http://localhost:8000/src/elm/TestRunner.elm
+  reactor:
+    image: elmkata
+    command: elm-reactor -a 0.0.0.0 -p 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/elm-stuff
